@@ -10,6 +10,7 @@ const Inputs = () => {
   const [valores, setValores] = useState("");
   const [result, setResult] = useState('')
   const [loading, setLoading] = useState(false)
+  const test = 'hola'
 
   const handleSubmit = (event) => {
     event.preventDefault();
