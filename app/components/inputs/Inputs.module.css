@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 20px;
   }
   
   .inputs label {
@@ -14,9 +14,10 @@
   .inputs input[type="text"] {
     padding: 10px;
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 5px;
     border: 2px solid #ccc;
+    width: 90%;
   }
   
   .inputs button[type="submit"] {
@@ -28,8 +29,24 @@
     font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    width: 90%;
+
   }
   
   .inputs button[type="submit"]:hover {
     background-color: #2ecc71;
+    width: 90%;
+
   }
+
+  .resultadoContainer{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .resultado{
+    width: 90%;
+  }
+
+

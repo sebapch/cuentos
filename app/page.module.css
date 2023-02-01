@@ -2,12 +2,13 @@
   background-color: #F7E9CC;
   font-family: 'Inter', sans-serif;
   color: #5c5c5c;
+  
 }
 
 .titulo{
   font-size: 40px;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 10px;
   text-shadow: 2px 2px 5px #333;
 }
 
@@ -16,8 +17,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   background-image: linear-gradient(to bottom, #F7E9CC, #F9DEC2);
   background-size: cover;
   opacity: 0.5;
+  height: 300vh;
 }

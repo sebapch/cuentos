@@ -8,73 +8,78 @@ const Inputs = () => {
   const [trama, setTrama] = useState("");
   const [ambiente, setAmbiente] = useState("");
   const [valores, setValores] = useState("");
+  const [result, setResult] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setLoading(true)
     const inputData = {
       personajePrincipal,
       trama,
       ambiente,
       valores,
     };
-    fetch("https://api.openai.com/v1/engines/text-davinci-002/jobs", {
+    fetch("https://api.openai.com/v1/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer <API_KEY>",
+        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        prompt: `Crea un cuento para niños con el personaje principal ${personajePrincipal}, en un ambiente ${ambiente}, con una trama ${trama} y enseñando los valores ${valores}`,
+        model: "text-davinci-003",
+        prompt: `Crea un cuento para niños con el personaje principal ${personajePrincipal}, con una trama ${trama} y enseñando ${valores}`,
         max_tokens: 1000,
         temperature: 0.5,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(data)
+        setResult(data.choices[0].text);
+        setLoading(false)
       });
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.inputs}>
+    <>
+        <form onSubmit={handleSubmit} className={styles.inputs}>
       <label>
-        Personaje Principal:
+        Personajes:
+        </label>
         <input
           type="text"
           value={personajePrincipal}
           onChange={(event) => setPersonajePrincipal(event.target.value)}
         />
-      </label>
-      <br />
       <label>
-        Trama:
+        Que pasa en la historia?:
+        </label>
         <input
           type="text"
           value={trama}
           onChange={(event) => setTrama(event.target.value)}
         />
-      </label>
-      <br />
+
       <label>
-        Ambiente:
-        <input
-          type="text"
-          value={ambiente}
-          onChange={(event) => setAmbiente(event.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Valores:
+        Enseñanza:
+        </label>
         <input
           type="text"
           value={valores}
           onChange={(event) => setValores(event.target.value)}
         />
-      </label>
-      <br />
-      <button type="submit">Generar Cuento</button>
+     
+      <button type="submit">{!loading ? "Generar Cuento" : "Cargando"}</button>
     </form>
+
+    <div className={styles.resultadoContainer}>
+      <p className={styles.resultado}>
+      {result}
+      </p>
+    </div>
+    </>
+
   )
 }
 
