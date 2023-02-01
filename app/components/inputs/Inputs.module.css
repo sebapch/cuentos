@@ -36,17 +36,22 @@
   .inputs button[type="submit"]:hover {
     background-color: #2ecc71;
     width: 90%;
-
+    margin-bottom: 10px !important;
   }
 
   .resultadoContainer{
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
   }
   .resultado{
     width: 90%;
+    margin-top: -1rem;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       
   }
 
 
