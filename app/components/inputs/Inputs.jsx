@@ -30,8 +30,8 @@ const Inputs = () => {
       body: JSON.stringify({
         model: "text-davinci-003",
         prompt: `Escribeme un cuento en el que ${personajePrincipal}, con una trama acerca de ${trama}, un problema que se resuelve y enseñando ${valores}.`,
-        max_tokens: 1000,
-        temperature: 0.5,
+        max_tokens: 600,
+        temperature: 0.7,
       }),
     })
       .then((res) => res.json())
